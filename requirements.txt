@@ -1,0 +1,12 @@
+# Testet med Python 3.13.2.
+# pygam, scipy og numpy er låst til en kombinasjon som fungerer sammen.
+pygam==0.12.0
+scipy==1.16.3
+numpy==2.5.4
+
+pandas==3.0.6
+pyarrow==26.0.0          # lesing og skriving av parquet
+liac-arff==2.5.0         # lesing av ARFF, importeres som arff
+statsmodels==0.15.0
+scikit-learn==1.9.1
+matplotlib==3.11.2

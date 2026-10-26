@@ -1,0 +1,20 @@
+# Virtuelt miljø og Python-cache
+.venv/
+__pycache__/
+
+# System- og editorfiler
+.DS_Store
+.vscode/
+
+# Rådata: lastes ned fra OpenML (id 41214 og 41215) til data/
+data/
+*.arff
+
+# Store genererte filer, lages på nytt av skriptene i code/
+*.parquet
+
+# Lagrede modeller: lages på nytt av steg 4 og 5, og pickle-filer er bundet til pakkeversjonene
+*.pkl
+
+# Private notater, kildedokumenter og læremateriell. Skal aldri publiseres
+privat/

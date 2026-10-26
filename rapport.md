@@ -148,7 +148,8 @@ Faktoren for hver tariffklasse er snittet av GAM-kurven i klassen, vektet med
 eksponering. For bonus-malus er frekvensfaktorene i tillegg justert mot klassens egne
 data med kredibilitetsvekt (full vekt ved 1 082 forventede skader) og tvunget til å
 være stigende. Grunnprisen er kalibrert på trening: 0,0556 skader per år x 1 660 €
-= 92 € kappet, 126 € med storskadepåslag. Snittpremien i trening er 173 €.
+= 92 € kappet, 126 € med storskadepåslag. Snittpremien i trening er 173 €. Hele
+tariffen står i seksjonen «Tariffen i detalj» nederst i rapporten.
 
 ### Evaluering på test
 
@@ -176,3 +177,136 @@ bare hvordan de fordeler risikoen.
   GAM best i 74 % av trekkene) og ikke sikker.
 - **Skadestørrelse alene:** Gamma-GAM forbedrer deviance med 0,45 % mot flat
   skadestørrelse på test. Mesteparten av gevinsten kommer fra frekvensmodellen.
+
+## Tariffen i detalj
+
+Tariffen består av en grunnpris og en faktor per klasse for sju variabler. Prisen for en kunde er grunnprisen ganget med faktoren fra hver tabell under. Variabler som ikke er nevnt, står på referanseklassen med faktor 1.
+
+Grunnprisen er 126 € per år. Det er prisen for referansekunden, som er 45 år og har bil som er 4–7 år, bonus-malus 50, tetthet 201–500, bilmerke B1, bensin og region R24. Prisen er risikopremie, altså forventet skadekostnad inkludert storskadepåslaget. Påslag for kostnader og margin og justering for fremtidig skadenivå kommer i tillegg.
+
+| Kunde | Utregning | Pris per år |
+| --- | --- | --- |
+| Referansekunden | Grunnprisen | 126 € |
+| 19 år, bonus-malus 100, bil 0–3 år, tetthet 1 001–2 000 | 126 x 1,16 x 5,40 x 1,07 x 1,18 | 998 € |
+| 30 år, bonus-malus 50, bil 15 år, tetthet 1–50 | 126 x 0,58 x 0,73 x 0,84 | 45 € |
+
+Prisene er regnet med uavrundede faktorer, så utregningen med de avrundede tallene kan gi et litt annet resultat.
+
+### Føreralder (år)
+
+| Klasse | Faktor |
+| --- | --- |
+| 18–19 | 1,16 |
+| 20–21 | 0,93 |
+| 22–23 | 0,75 |
+| 24–25 | 0,63 |
+| 26–29 | 0,55 |
+| 30–34 | 0,58 |
+| 35–39 | 0,70 |
+| 40–44 | 0,87 |
+| 45–49 | 1,00 |
+| 50–54 | 0,99 |
+| 55–59 | 0,91 |
+| 60–69 | 0,88 |
+| 70–79 | 0,93 |
+| 80 og over | 1,00 |
+
+### Bonus-malus
+
+| Klasse | Faktor |
+| --- | --- |
+| 50 | 1,00 |
+| 51–55 | 1,45 |
+| 56–60 | 1,85 |
+| 61–70 | 2,61 |
+| 71–80 | 2,66 |
+| 81–90 | 2,81 |
+| 91–99 | 3,77 |
+| 100 | 5,40 |
+| 101–110 | 7,43 |
+| 111–125 | 9,41 |
+| 126 og over | 13,59 |
+
+### Bilalder (år)
+
+| Klasse | Faktor |
+| --- | --- |
+| 0–3 | 1,07 |
+| 4–7 | 1,00 |
+| 8–10 | 0,93 |
+| 11–13 | 0,85 |
+| 14–16 | 0,73 |
+| 17–19 | 0,60 |
+| 20 og over | 0,48 |
+
+### Tetthet (innbyggere per km²)
+
+| Klasse | Faktor |
+| --- | --- |
+| 1–50 | 0,84 |
+| 51–100 | 0,94 |
+| 101–200 | 0,96 |
+| 201–500 | 1,00 |
+| 501–1 000 | 1,11 |
+| 1 001–2 000 | 1,18 |
+| 2 001–5 000 | 1,24 |
+| 5 001–10 000 | 1,19 |
+| 10 001 og over | 1,15 |
+
+### Drivstoff
+
+| Klasse | Faktor |
+| --- | --- |
+| Diesel | 1,15 |
+| Bensin (Regular) | 1,00 |
+
+<details>
+<summary>Bilmerke (11 klasser)</summary>
+
+| Klasse | Faktor |
+| --- | --- |
+| B1 | 1,00 |
+| B2 | 0,99 |
+| B3 | 1,07 |
+| B4 | 1,02 |
+| B5 | 1,09 |
+| B6 | 1,00 |
+| B10 | 1,11 |
+| B11 | 1,29 |
+| B12 | 0,82 |
+| B13 | 1,09 |
+| B14 | 0,91 |
+
+</details>
+
+<details>
+<summary>Region (22 klasser)</summary>
+
+| Klasse | Faktor |
+| --- | --- |
+| R11 | 0,96 |
+| R21 | 1,02 |
+| R22 | 1,05 |
+| R23 | 0,98 |
+| R24 | 1,00 |
+| R25 | 0,97 |
+| R26 | 0,99 |
+| R31 | 1,02 |
+| R41 | 0,92 |
+| R42 | 1,00 |
+| R43 | 1,03 |
+| R52 | 1,00 |
+| R53 | 1,00 |
+| R54 | 1,06 |
+| R72 | 1,07 |
+| R73 | 0,84 |
+| R74 | 1,15 |
+| R82 | 1,19 |
+| R83 | 0,96 |
+| R91 | 1,02 |
+| R93 | 1,13 |
+| R94 | 1,06 |
+
+</details>
+
+Faktorene delt i frekvens og skadestørrelse ligger i `results/tariff_faktorer.csv`, og grunnprisen i `results/tariff_grunnpris.json`.
